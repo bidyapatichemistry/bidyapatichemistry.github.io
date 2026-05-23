@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Bidyapati Kumar – Academic Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0d1d4e;
+    --teal:   #1a9b8c;
+    --white:  #ffffff;
+    --light:  #f4f6fb;
+    --border: #dce3f0;
+    --text:   #222;
+    --muted:  #555;
+    --head-font: 'Merriweather', serif;
+    --body-font: 'Source Sans 3', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body-font); color: var(--text); background: var(--light); font-size: 15px; line-height: 1.6; }
+
+  /* ─── TOP NAV ─── */
+  header {
+    background: var(--navy);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    gap: 20px;
+    min-height: 72px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+  .brand-icon { font-size: 2rem; line-height: 1; }
+  .brand-text h1 { font-family: var(--head-font); font-size: 1.15rem; font-weight: 700; letter-spacing: .3px; }
+  .brand-text p  { font-size: .78rem; opacity: .85; line-height: 1.45; }
+
+  nav { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+  nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    padding: 24px 11px;
+    display: flex; align-items: center; gap: 5px;
+    border-bottom: 3px solid transparent;
+    transition: border-color .2s;
+    white-space: nowrap;
+  }
+  nav a.active, nav a:hover { border-bottom-color: var(--teal); }
+  nav a .ni { font-size: 1rem; }
+
+  /* ─── HAMBURGER ─── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; border-radius: 2px; transition: .3s; }
+  .nav-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-open .hamburger span:nth-child(2) { opacity: 0; }
+  .nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── LAYOUT ─── */
+  .page-wrap { display: flex; gap: 0; min-height: calc(100vh - 72px); }
+
+  /* ─── LEFT SIDEBAR ─── */
+  aside {
+    width: 270px;
+    min-width: 270px;
+    background: var(--white);
+    padding: 24px 18px 30px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .profile-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  .profile-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #b0c4de 0%, #4682b4 50%, #2e4a7a 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 4rem;
+  }
+  .sidebar-name { font-family: var(--head-font); font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .sidebar-role { color: var(--teal); font-weight: 600; font-size: .88rem; }
+  .sidebar-divider { border: none; border-top: 1px solid var(--border); }
+
+  .sidebar-info { display: flex; flex-direction: column; gap: 11px; }
+  .sidebar-item { display: flex; align-items: flex-start; gap: 10px; font-size: .83rem; color: var(--muted); line-height: 1.5; }
+  .sidebar-item .icon { font-size: 1.05rem; margin-top: 1px; flex-shrink: 0; color: var(--navy); }
+  .sidebar-item a { color: var(--teal); text-decoration: none; word-break: break-all; }
+  .sidebar-item a:hover { text-decoration: underline; }
+
+  .btn-cv {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--navy); color: var(--white);
+    padding: 13px 18px; border-radius: 5px;
+    font-weight: 700; font-size: .88rem; letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: background .2s;
+  }
+  .btn-cv:hover { background: #162b7a; }
+
+  /* ─── MAIN CONTENT ─── */
+  main { flex: 1; padding: 24px 22px 30px; min-width: 0; }
+
+  /* ─── WELCOME + QUICK-CARDS ROW ─── */
+  .welcome-row { display: flex; gap: 20px; margin-bottom: 20px; }
+  .welcome-box { flex: 1; min-width: 0; }
+  .section-heading {
+    font-family: var(--head-font); font-size: 1.4rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 3px solid var(--teal); display: inline-block;
+  }
+  .welcome-box p { font-size: .9rem; color: var(--text); margin-bottom: 12px; }
+  .welcome-box strong { color: var(--navy); }
+  .welcome-box .highlight { color: var(--teal); font-weight: 700; }
+
+  .quick-cards { width: 210px; min-width: 210px; display: flex; flex-direction: column; gap: 0; }
+  .qcard {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .qcard + .qcard { border-top: none; }
+  .qcard:first-child { border-radius: 5px 5px 0 0; }
+  .qcard:last-child  { border-radius: 0 0 5px 5px; }
+  .qcard .qi { font-size: 1.1rem; color: var(--navy); flex-shrink: 0; margin-top: 2px; }
+  .qcard-body h4 { font-size: .82rem; font-weight: 700; color: var(--navy); }
+  .qcard-body p  { font-size: .76rem; color: var(--muted); line-height: 1.4; margin-top: 2px; }
+  .qcard-body .completed { color: var(--teal); font-weight: 700; }
+
+  /* ─── THREE COLUMN SECTIONS ─── */
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+  .card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 5px;
+    padding: 16px; min-width: 0;
+  }
+  .card-heading {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .78rem; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .6px;
+    margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .card-heading .chi { font-size: 1.1rem; }
+
+  /* Qualifications table */
+  table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+  thead th {
+    background: var(--navy); color: var(--white);
+    padding: 7px 8px; text-align: left; font-weight: 700; font-size: .75rem;
+  }
+  tbody tr:nth-child(even) { background: #f0f4fb; }
+  tbody td { padding: 7px 8px; color: var(--text); border-bottom: 1px solid var(--border); vertical-align: top; }
+  .year-cell { font-weight: 700; color: var(--teal); white-space: nowrap; }
+  .year-plain { font-weight: 600; }
+
+  /* Experience timeline */
+  .exp-item { display: flex; gap: 10px; margin-bottom: 16px; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 5px; }
+  .exp-body h4 { font-size: .88rem; font-weight: 700; color: var(--navy); }
+  .exp-body .inst { font-size: .8rem; color: var(--text); }
+  .exp-body .date { font-size: .78rem; color: var(--muted); display: flex; align-items: center; gap: 5px; margin-top: 3px; }
+
+  /* Research interests list */
+  .ri-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .ri-list li { display: flex; align-items: flex-start; gap: 7px; font-size: .82rem; color: var(--text); }
+  .ri-list li::before { content: '●'; color: var(--navy); font-size: .6rem; margin-top: 5px; flex-shrink: 0; }
+
+  /* Teaching subjects grid */
+  .subjects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-top: 8px; }
+  .sub-item { display: flex; align-items: center; gap: 6px; font-size: .8rem; }
+  .sub-item .tick { color: var(--teal); font-size: .9rem; }
+
+  /* Google Scholar button */
+  .btn-scholar {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--navy); color: var(--white);
+    padding: 11px 16px; border-radius: 5px;
+    font-weight: 700; font-size: .85rem;
+    text-decoration: none; margin-top: 14px;
+    transition: background .2s;
+  }
+  .btn-scholar:hover { background: #162b7a; }
+  .g-logo {
+    width: 18px; height: 18px; border-radius: 50%; background: white;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: .8rem; color: var(--navy); font-family: serif; flex-shrink: 0;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,.75);
+    text-align: center; padding: 14px 20px;
+    font-size: .78rem; letter-spacing: .3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Tablet: ≤900px */
+  @media (max-width: 900px) {
+    .three-col { grid-template-columns: 1fr 1fr; }
+    .quick-cards { width: 180px; min-width: 180px; }
+    nav a { padding: 20px 8px; font-size: .72rem; }
+  }
+
+  /* Small tablet / large phone: ≤768px */
+  @media (max-width: 768px) {
+    header { padding: 0 16px; }
+    .hamburger { display: block; }
+    nav {
+      display: none; flex-direction: column; align-items: flex-start;
+      width: 100%; background: var(--navy); padding: 0 16px 12px;
+    }
+    .nav-open nav { display: flex; }
+    nav a { padding: 10px 0; border-bottom: none; border-left: 3px solid transparent; padding-left: 10px; }
+    nav a.active, nav a:hover { border-left-color: var(--teal); border-bottom-color: transparent; }
+
+    .page-wrap { flex-direction: column; }
+    aside {
+      width: 100%; min-width: unset; flex-direction: row; flex-wrap: wrap;
+      align-items: flex-start; gap: 14px; border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .profile-photo, .profile-photo-placeholder { width: 130px; min-width: 130px; aspect-ratio: 3/4; }
+    .sidebar-main { flex: 1; min-width: 180px; }
+    .btn-cv { width: 100%; }
+
+    .welcome-row { flex-direction: column; }
+    .quick-cards { width: 100%; min-width: unset; flex-direction: row; flex-wrap: wrap; }
+    .qcard { flex: 1; min-width: 180px; }
+    .qcard:first-child { border-radius: 5px 0 0 5px; }
+    .qcard:last-child  { border-radius: 0 5px 5px 0; }
+
+    .three-col { grid-template-columns: 1fr; }
+  }
+
+  /* Phone: ≤480px */
+  @media (max-width: 480px) {
+    aside { flex-direction: column; }
+    .profile-photo, .profile-photo-placeholder { width: 100%; min-width: unset; aspect-ratio: 4/3; }
+    .quick-cards { flex-direction: column; }
+    .qcard { min-width: unset; }
+    .qcard:first-child { border-radius: 5px 5px 0 0; }
+    .qcard:last-child  { border-radius: 0 0 5px 5px; }
+    main { padding: 16px 14px; }
+    .subjects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER / NAV ═══════════ -->
+<header>
+  <div class="brand">
+    <div class="brand-icon">🧪</div>
+    <div class="brand-text">
+      <h1>Dr. Bidyapati Kumar</h1>
+      <p>State Aided College Teacher (SACT)<br>Department of Chemistry<br>Achhruram Memorial College</p>
+    </div>
+  </div>
+  <button class="hamburger" id="menuBtn" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mainNav">
+    <a href="#home" class="active"><span class="ni">🏠</span> Home</a>
+    <a href="#about"><span class="ni">👤</span> About Me</a>
+    <a href="#qualifications"><span class="ni">🎓</span> Qualifications</a>
+    <a href="#experience"><span class="ni">💼</span> Experience</a>
+    <a href="#research"><span class="ni">🔬</span> Research</a>
+    <a href="#publications"><span class="ni">📖</span> Publications</a>
+    <a href="#contact"><span class="ni">✉️</span> Contact</a>
+  </nav>
+</header>
+
+<!-- ═══════════ BODY ═══════════ -->
+<div class="page-wrap" id="home">
+
+  <!-- ─── LEFT SIDEBAR ─── -->
+  <aside>
+    <!-- Replace the src with your actual photo path -->
+    <img
+      src="photo.jpeg"
+      alt="Dr. Bidyapati Kumar"
+      class="profile-photo"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+    >
+    <div class="profile-photo-placeholder" style="display:none;">👨‍🔬</div>
+
+    <div class="sidebar-main">
+      <div class="sidebar-name">Dr. Bidyapati Kumar</div>
+      <div class="sidebar-role">State Aided College Teacher (SACT)</div>
+      <hr class="sidebar-divider" style="margin:10px 0;">
+
+      <div class="sidebar-info">
+        <div class="sidebar-item">
+          <span class="icon">🏛️</span>
+          <span>Department of Chemistry<br>Achhruram Memorial College<br>Jhalda, Purulia – 723202<br>West Bengal, India</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="icon">✉️</span>
+          <span><a href="mailto:bidyapatichem@gmail.com">bidyapatichem@gmail.com</a></span>
+        </div>
+        <div class="sidebar-item">
+          <span class="icon">🌐</span>
+          <div>
+            <div style="font-weight:600;color:var(--navy);font-size:.83rem;">Google Scholar Profile</div>
+            <a href="https://scholar.google.com/citations?user=Xjli0vUAAAAJ&hl=en" target="_blank" rel="noopener">
+              https://scholar.google.com/citations?user=Xjli0vUAAAAJ&hl=en;hl=en&amp;oi=ao
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <a href="cv.pdf" class="btn-cv">⬇️ &nbsp;Download CV</a>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main>
+
+    <!-- WELCOME + QUICK CARDS -->
+    <section class="welcome-row" id="about">
+      <div class="welcome-box">
+        <h2 class="section-heading">Welcome</h2>
+        <p>
+          Welcome to my academic profile. I am <strong>Dr. Bidyapati Kumar</strong>, serving as a State Aided College Teacher (SACT) in the Department of Chemistry at Achhruram Memorial College, Jhalda, Purulia. I completed my M.Sc. in Organic Chemistry from Ranchi University in 2008 and M.Phil. in Chemistry from Ranchi University in 2018. I completed my <strong>Ph.D. in Chemistry</strong> from Sidho-Kanho-Birsha University, Purulia in <span class="highlight">2026</span>.
+        </p>
+        <p>
+          My teaching and research interests include Organic Chemistry and Chemical Education. I am passionate about teaching, mentoring students, and contributing to the advancement of chemical sciences through research.
+        </p>
+      </div>
+
+      <div class="quick-cards">
+        <div class="qcard">
+          <span class="qi">🎓</span>
+          <div class="qcard-body">
+            <h4>Ph.D. in Chemistry</h4>
+            <p>Sidho-Kanho-Birsha University, Purulia</p>
+            <p class="completed">Completed in 2026</p>
+          </div>
+        </div>
+        <div class="qcard">
+          <span class="qi">🎓</span>
+          <div class="qcard-body">
+            <h4>M.Phil. in Chemistry</h4>
+            <p>Ranchi University, Ranchi<br>2018</p>
+          </div>
+        </div>
+        <div class="qcard">
+          <span class="qi">🎓</span>
+          <div class="qcard-body">
+            <h4>M.Sc. in Organic Chemistry</h4>
+            <p>Ranchi University, Ranchi<br>2008</p>
+          </div>
+        </div>
+        <div class="qcard">
+          <span class="qi">✉️</span>
+          <div class="qcard-body">
+            <h4>Email</h4>
+            <p>bidyapatichem@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROW 1: Qualifications | Experience | Research Interests -->
+    <div class="three-col" id="qualifications">
+
+      <!-- Academic Qualifications -->
+      <div class="card">
+        <div class="card-heading"><span class="chi">🎓</span> Academic Qualifications</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Degree</th>
+              <th>Subject / Specialization</th>
+              <th>University / Institution</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ph.D.</td>
+              <td>Chemistry</td>
+              <td>Sidho-Kanho-Birsha University, Purulia</td>
+              <td class="year-cell">2026<br></td>
+            </tr>
+            <tr>
+              <td>M.Phil.</td>
+              <td>Chemistry</td>
+              <td>Ranchi University, Ranchi</td>
+              <td class="year-plain">2018</td>
+            </tr>
+            <tr>
+              <td>M.Sc.</td>
+              <td>Organic Chemistry</td>
+              <td>Ranchi University, Ranchi</td>
+              <td class="year-plain">2008</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Professional Experience -->
+      <div class="card" id="experience">
+        <div class="card-heading"><span class="chi">💼</span> Professional Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <h4>Lecturer of Chemistry</h4>
+            <div class="inst">Ananda Marga College, Pundag, Purulia</div>
+            <div class="date">📅 July 2010 – December 2010</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <h4>State Aided College Teacher (SACT)</h4>
+            <div class="inst">Department of Chemistry<br>Achhruram Memorial College, Jhalda, Purulia</div>
+            <div class="date">📅 December 2010 – Present</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Interest Areas -->
+      <div class="card" id="research">
+        <div class="card-heading"><span class="chi">🔬</span> Research Interest Areas</div>
+        <ul class="ri-list">
+          <li>Design and Synthesis of Metal Complexes</li>
+          <li>Supramolecular Activity</li>
+          <li>Applications as Catalyst (Homogeneous and Heterogeneous)</li>
+          <li>Hydrogen Evolution Reaction (HER)</li>
+          <li>Oxygen Evolution Reaction (OER)</li>
+          <li>Enzyme Mimic Activity</li>
+          <li>Enzyme Sensing Materials for Environmental Monitoring and Biological Use</li>
+          <li>Biodiesel</li>
+        </ul>
+      </div>
+
+    </div><!-- /three-col row 1 -->
+
+    <!-- ROW 2: About Research | Teaching | Research & Publications -->
+    <div class="three-col" id="publications">
+
+      <!-- About Research -->
+      <div class="card">
+        <div class="card-heading"><span class="chi">🔭</span> About Research</div>
+        <p style="font-size:.83rem;color:var(--text);">
+          My research focuses on the design and synthesis of metal complexes and their supramolecular activities, with special emphasis on catalytic applications (homogeneous and heterogeneous), HER, OER, enzyme mimic activity and enzyme sensing materials for environmental monitoring and biological use. Additionally, I am interested in biodiesel and other sustainable chemical processes.
+        </p>
+      </div>
+
+      <!-- Teaching -->
+      <div class="card">
+        <div class="card-heading"><span class="chi">📖</span> Teaching</div>
+        <p style="font-size:.83rem;color:var(--text);margin-bottom:6px;">
+          I have been teaching various undergraduate subjects in Chemistry for B.Sc. (Honours &amp; General) students including:
+        </p>
+        <div class="subjects-grid">
+          <div class="sub-item"><span class="tick">✅</span> Organic Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> General Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Inorganic Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Coordination Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Physical Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Environmental Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Analytical Chemistry</div>
+          <div class="sub-item"><span class="tick">✅</span> Laboratory/Practical Courses</div>
+        </div>
+      </div>
+
+      <!-- Research & Publications -->
+      <div class="card" id="contact">
+        <div class="card-heading"><span class="chi">📄</span> Research &amp; Publications</div>
+        <p style="font-size:.83rem;color:var(--text);">
+          I have contributed to various research works in the field of chemistry. For detailed publications, citations and metrics, please visit my Google Scholar profile.
+        </p>
+        <a
+          href="https://scholar.google.com/citations?user=Xjli0vUAAAAJ&hl=en"
+          target="_blank"
+          rel="noopener"
+          class="btn-scholar"
+        >
+          <span class="g-logo">G</span>
+          View My Google Scholar Profile
+        </a>
+      </div>
+
+    </div><!-- /three-col row 2 -->
+
+  </main>
+</div><!-- /page-wrap -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  © 2024 Dr. Bidyapati Kumar &nbsp;|&nbsp; Department of Chemistry &nbsp;|&nbsp; Achhruram Memorial College, Jhalda, Purulia, West Bengal, India
+</footer>
+
+<script>
+  // Hamburger toggle
+  const btn = document.getElementById('menuBtn');
+  const hdr = document.querySelector('header');
+  btn.addEventListener('click', () => hdr.classList.toggle('nav-open'));
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', () => hdr.classList.remove('nav-open'));
+  });
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
